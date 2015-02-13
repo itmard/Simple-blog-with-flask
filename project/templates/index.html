@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "form.html" as wtf %}
+
+
+{% block title %}{{ g.user.blog_title }}{% endblock %}
+{% block styles %}
+    {{ super() }}
+    <style>
+    form{
+        width: 400px;
+    }
+    td{
+        font-size: 18px;
+    }
+    textarea{
+        height: 200px !important;
+    }
+    </style>
+{% endblock %}
+{% block page_content %}
+    <h1>Welcome {{ g.user.username }}</h1>
+    <h4 class="pull-right"><a href="{{ url_for('main.post') }}">Add new post</a></h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Post title</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        {% for post in  posts %}
+            <tr>
+                <td>{{ post.post_title }}</td>
+                <td><a class="btn btn-danger" href="{{ url_for('main.delete_post', pk=post.pk) }}">Delete</a>
+                    <a class="btn btn-primary" href="{{ url_for('main.edit_post', pk=post.pk) }}" >  Edit </a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

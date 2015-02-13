@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "form.html" as wtf %}
+
+
+{% block title %}{{ g.user.blog_title }}{% endblock %}
+{% block styles %}
+    {{ super() }}
+    <style>
+    form{
+        width: 400px;
+    }
+    textarea{
+        height: 200px !important;
+    }
+    </style>
+{% endblock %}
+{% block page_content %}
+    <h1>{{ g.user.blog_title }}</h1>
+    {% for post in posts  %}
+        <h2>{{post.post_title}}</h2>
+        <p>{{ post.description }}</p>
+        <h6>{{ post.created_on.strftime('%Y-%m-%d %H:%M') }}</h6>
+        <hr/>
+
+    {% endfor %}
+{% endblock %}

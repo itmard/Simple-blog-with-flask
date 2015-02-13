@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "form.html" as wtf %}
+
+
+{% block title %}Prefect Blog - Add new post{% endblock %}
+{% block styles %}
+    {{ super() }}
+    <style>
+    form{
+        width: 400px;
+    }
+    textarea{
+        height: 200px !important;
+    }
+    </style>
+{% endblock %}
+{% block page_content %}
+    <h2>Add Post</h2>
+    {{ wtf.quick_form(form) }}
+{% endblock %}

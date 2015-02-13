@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "form.html" as wtf %}
+
+
+{% block title %}Create new blog{% endblock %}
+{% block styles %}
+    {{ super() }}
+
+    <style>
+    form{
+        width: 400px;
+    }
+    </style>
+{% endblock %}
+{% block page_content %}
+    <h2>Register</h2>
+    {{ wtf.quick_form(form) }}
+{% endblock %}
